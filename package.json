@@ -1,0 +1,33 @@
+{
+  "name": "@timetotrian/packages",
+  "version": "0.0.1",
+  "description": "common module of timetotrain project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/True-North-Creatives/ttt-packages.git"
+  },
+  "author": "Akhil Reddy Gangula",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/True-North-Creatives/ttt-packages/issues"
+  },
+  "homepage": "https://github.com/True-North-Creatives/ttt-packages#readme",
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "http-status": "^1.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.11",
+    "validator": "^13.5.2"
+  }
+}
