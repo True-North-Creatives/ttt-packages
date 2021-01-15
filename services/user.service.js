@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import bcrypt from 'bcrypt';
 import User from '../models/user.model';
-import roles from '../../config/roles';
+import roles from '../constants/roles';
 import errorMap from '../constants/errorMap';
 
 /**
@@ -23,7 +23,7 @@ export const createUser = async (payload) => {
  * @param {object} options - Query options
  * @return {Promise<QueryResult>}
  */
-const queryUsers = async (filter, options) => {
+export const queryUsers = async (filter, options) => {
     const users = await User.paginate(filter, options);
     return users;
 };
@@ -47,7 +47,7 @@ export const getUserByFilter = async (filter) => {
 export const updateUser = async (email, payload) => {
     const user = await User.findOneAndUpdate({ email }, { ...payload }).exec();
     if (!user) {
-        return { ...errorMap['AUTH-100'], httpStatus };
+        return { ...errorMap['AUTH-100'], httpStatus: httpStatus.BAD_REQUEST };
     }
     return user;
 };
@@ -65,25 +65,37 @@ export const updatePass = async (email, pass) => {
  * @param {objectId} userId
  * @return {Promise<User>}
  */
-const deleteUserById = async (email) => {
+export const deleteUserById = async (email) => {
     const user = await getUserByFilter({ email });
     if (!user) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+        return { ...errorMap['AUTH-100'], httpStatus: httpStatus.BAD_REQUEST };
     }
     await user.remove();
     return user;
 };
 
-const userPresent = async (email) => {
+/**
+ * check if email ID is present
+ * @param {string} email
+ */
+export const userPresent = async (email) => {
     const user = await User.isEmailTaken(email);
     return user;
 };
 
-const getAllUsers = async () => {
+/**
+ * Gets all users
+ */
+export const getAllUsers = async () => {
     const user = await User.find();
     return user;
 };
 
+/**
+ *
+ * @param {string} email
+ * @param {string} token
+ */
 export const setResetURL = async (email, token) => {
     const user = await User.findOneAndUpdate(
         { email },
@@ -92,7 +104,11 @@ export const setResetURL = async (email, token) => {
     return user !== null;
 };
 
-const removeResetURL = async (email) => {
+/**
+ *
+ * @param {string} email
+ */
+export const removeResetURL = async (email) => {
     const user = await User.findOneAndUpdate(
         { email },
         { token: undefined },
@@ -100,9 +116,18 @@ const removeResetURL = async (email) => {
     return user !== null;
 };
 
+/**
+ *
+ * @param {string} email
+ * @param {string} token
+ */
 export const verifyResetURL = async (email, token) => {
     const { resetURL } = await User.findOne({ email }).lean();
     return token === resetURL;
 };
 
+/**
+ *
+ * @param {User} user
+ */
 export const isSubscriptionActive = (user) => user.role.includes(roles.ROLES.Default);

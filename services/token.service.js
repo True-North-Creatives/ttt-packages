@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import {} from './user.service';
-import config from '../../config/config';
+import { updateUser } from './user.service';
+import { jwt as jwtConfig } from '../common/config';
 
 /**
  * Update the refresh token in user database
@@ -9,7 +9,7 @@ import config from '../../config/config';
  * @return {object} updated user model
  */
 export const updateRefreshToken = async (user, token) => {
-    const updatedUser = await userService.updateUser(user.email, {
+    const updatedUser = await updateUser(user.email, {
         refreshToken: token,
     });
     return updatedUser;
@@ -26,7 +26,7 @@ export const deleteRefreshToken = async (user, token) => {
     if (index > -1) {
         user.refreshToken.splice(index, 1);
     }
-    const updatedUser = await userService.updateUser(user.email, user);
+    const updatedUser = await updateUser(user.email, user);
     return updatedUser;
 };
 
@@ -39,7 +39,7 @@ export const deleteRefreshToken = async (user, token) => {
 export const generateAccessTokens = (res, data) => {
     const accessToken = jwt.sign(
         { uid: data.email, role: data.role },
-        config.jwt.secret,
+        jwtConfig.secret,
         {
             expiresIn: '60m',
         },
@@ -53,7 +53,7 @@ export const generateAccessTokens = (res, data) => {
  * @param {object} data
  * @return {object} jwt token
  */
-export const generateVerificationTokens = (data) => jwt.sign({ ...data }, config.jwt.secret, {
+export const generateVerificationTokens = (data) => jwt.sign({ ...data }, jwtConfig.secret, {
     expiresIn: '60m',
 });
 
@@ -66,7 +66,7 @@ export const generateVerificationTokens = (data) => jwt.sign({ ...data }, config
 const generateRefreshTokens = (res, data) => {
     const refreshToken = jwt.sign(
         { uid: data.email, role: data.role },
-        config.jwt.secret,
+        jwtConfig.secret,
         {
             expiresIn: '14 days',
         },
@@ -97,7 +97,7 @@ export const generateTokens = (res, data) => {
  */
 export const isValidToken = (token = '') => {
     try {
-        return jwt.verify(token, config.jwt.secret);
+        return jwt.verify(token, jwtConfig.secret);
     } catch (e) {
         return null;
     }

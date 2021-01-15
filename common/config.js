@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 export const jwt = {
-    // secret: 
-}
+    secret: process.env.secret,
+};
+export const { ENV } = process.env;

@@ -99,9 +99,9 @@ const userSchema = new mongoose.Schema(
  * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
  * @return {Promise<boolean>}
  */
-const isEmailTaken = async (email, excludeUserId) =>  {
-  const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
-  return !!user;
+const isEmailTaken = async (email, excludeUserId) => {
+    const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
+    return !!user;
 };
 
 userSchema.statics.isEmailTaken = isEmailTaken;
@@ -112,9 +112,7 @@ userSchema.statics.isEmailTaken = isEmailTaken;
  * @param {string} storedPass
  * @return {Promise<boolean>}
  */
-const isPasswordMatch = async (password, storedPass) => {
-  return bcrypt.compare(password, storedPass);
-};
+const isPasswordMatch = async (password, storedPass) => bcrypt.compare(password, storedPass);
 
 userSchema.methods.isPasswordMatch = isPasswordMatch;
 
