@@ -1,5 +1,5 @@
 {
-  "name": "@timetotrian/packages",
+  "name": "ttt-packages",
   "version": "0.0.1",
   "description": "common module of timetotrain project",
   "main": "index.js",

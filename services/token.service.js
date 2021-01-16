@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { updateUser } from './user.service';
-import { jwt as jwtConfig } from '../common/config';
+import { jwt as jwtConfig } from '../config/config';
 
 /**
  * Update the refresh token in user database
