@@ -1,8 +1,8 @@
 import httpStatus from 'http-status';
 import bcrypt from 'bcrypt';
-import User from '../models/user.model';
-import roles from '../constants/roles';
-import errorMap from '../constants/errorMap';
+import User from '../models/user.model.js';
+import roles from '../constants/roles.js';
+import errorMap from '../constants/errorMap.js';
 
 /**
  * Create a user

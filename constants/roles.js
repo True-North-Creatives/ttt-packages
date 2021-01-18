@@ -1,11 +1,11 @@
-const ROLES = {
+export const ROLES = {
     Default: 'DEFAULT',
     Nutritionist: 'NUTRITIONIST',
     Trainer: 'TRAINER',
     Manager: 'MANAGER',
     Admin: 'ADMIN',
 };
-const route = {
+export const route = {
     //   auth: {
     USER_EXISTS: 'user_exists',
 
@@ -55,7 +55,7 @@ const route = {
     GET_ALL_USERS: 'getAllUsers',
 };
 
-const roleRights = new Map();
+export const roleRights = new Map();
 roleRights.set(ROLES.Admin, Object.values(route));
 roleRights.set(ROLES.Manager, [
     route.UPDATE_MENU_ITEM,
@@ -108,9 +108,3 @@ roleRights.set(ROLES.Default, [
     route.GET_ALL_PAYMENTS,
     route.GET_MY_PROFILE,
 ]);
-
-module.exports = {
-    ROLES,
-    roleRights,
-    route,
-};
