@@ -1,6 +1,6 @@
 {
   "name": "ttt-packages",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "common module of timetotrain project",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "http-status": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.11",
-    "validator": "^13.5.2"
+    "validator": "^13.5.2",
+    "winston": "^3.3.3"
   }
 }
