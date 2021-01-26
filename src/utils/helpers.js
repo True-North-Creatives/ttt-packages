@@ -1,4 +1,4 @@
-import config from '../config/config.js';
+import config from '../config/config';
 
 export const constructResetUrl = (token) => (config.env === 'development'
     ? `https://localhost:8081/reset/${token}`

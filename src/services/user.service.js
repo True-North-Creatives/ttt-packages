@@ -1,8 +1,8 @@
 import httpStatus from 'http-status';
 import bcrypt from 'bcrypt';
-import User from '../models/user.model.js';
-import roles from '../constants/roles.js';
-import errorMap from '../constants/errorMap.js';
+import User from '../models/user.model';
+import { ROLES } from '../constants/roles';
+import errorMap from '../constants/errorMap';
 
 /**
  * Create a user
@@ -130,4 +130,4 @@ export const verifyResetURL = async (email, token) => {
  *
  * @param {User} user
  */
-export const isSubscriptionActive = (user) => user.role.includes(roles.ROLES.Default);
+export const isSubscriptionActive = (user) => user.role.includes(ROLES.Default);
