@@ -2,10 +2,10 @@ export const ERROR = 'error';
 export const WARN = 'warn';
 export const INFO = 'info';
 
-const errorMap = {
+const authMap = {
     'AUTH-100': {
         code: 'AUTH-100',
-        message: 'We don\'t recognise this user',
+        message: "We don't recognise this user",
         type: ERROR,
         name: 'Auth failed, user not found',
     },
@@ -53,7 +53,7 @@ const errorMap = {
     },
     'AUTH-108': {
         code: 'AUTH-108',
-        message: 'Can\'t reset password',
+        message: "Can't reset password",
         type: ERROR,
         name: 'reset password failure, user signed up via auth providers',
     },
@@ -61,8 +61,18 @@ const errorMap = {
         code: 'AUTH-109',
         message: 'uid not found',
         type: ERROR,
-        name: 'uid cookie is not found'
-    }
+        name: 'uid cookie is not found',
+    },
 };
 
-export default errorMap;
+export const customError = (data) => ({
+    'CUS-100': {
+        code: 'GEN-100',
+        message: 'Something went wrong!',
+        type: ERROR,
+        name: 'Generice error',
+        data,
+    },
+});
+
+export default { ...authMap };

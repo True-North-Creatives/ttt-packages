@@ -1,6 +1,6 @@
 {
   "name": "ttt-packages",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "common module of timetotrain project",
   "main": "lib/",
   "scripts": {
@@ -9,7 +9,8 @@
     "lint:fix": "eslint src --fix",
     "build": "npm run clean && npm run transpile",
     "transpile": "babel src -d lib --ignore node_modules",
-    "clean": "rimraf lib"
+    "clean": "rimraf lib",
+    "format": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -27,9 +28,11 @@
     "@babel/preset-env": "^7.12.11",
     "eslint": "^7.17.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "2.2.1"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "http-status": "^1.5.0",

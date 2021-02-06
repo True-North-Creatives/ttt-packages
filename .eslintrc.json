@@ -1,17 +1,15 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "rules": {
-        "max-len": [2, {"code": 100, "ignoreUrls": true}],
-        "indent": ["error", 4]
-    }
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "max-len": [2, { "code": 100, "ignoreUrls": true }],
+    "indent": ["error", 4]
+  }
 }
