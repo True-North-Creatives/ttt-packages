@@ -57,6 +57,12 @@ const errorMap = {
         type: ERROR,
         name: 'reset password failure, user signed up via auth providers',
     },
+    'AUTH-109': {
+        code: 'AUTH-109',
+        message: 'uid not found',
+        type: ERROR,
+        name: 'uid cookie is not found'
+    }
 };
 
 export default errorMap;
