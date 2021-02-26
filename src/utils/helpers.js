@@ -6,9 +6,9 @@ export const constructResetUrl = (token) => {
     case 'dev':
         return `https://localhost:8081/reset/${token}`;
     case 'staging':
-        return `https://stage.auth.timetotrain.fit/reset/${token}`;
+        return `https://stage.timetotrain.fit/reset/${token}`;
     case 'prod':
-        return `https://auth.timetotrain.fit/reset/${token}`;
+        return `https://timetotrain.fit/reset/${token}`;
     default:
         logger.error('Environment is not set!');
         return 'https://timetotrain.fit/';
@@ -20,9 +20,9 @@ export const constructActivateUrl = (token) => {
     case 'dev':
         return `https://localhost:8081/activate/${token}`;
     case 'staging':
-        return `https://stage.auth.timetotrain.fit/activate/${token}`;
+        return `https://stage.timetotrain.fit/activate/${token}`;
     case 'prod':
-        return `https://auth.timetotrain.fit/activate/${token}`;
+        return `https://timetotrain.fit/activate/${token}`;
     default:
         logger.error('Environment is not set!');
         return 'https://timetotrain.fit/';
