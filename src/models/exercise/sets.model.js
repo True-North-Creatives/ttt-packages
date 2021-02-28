@@ -1,19 +1,10 @@
 const { Schema } = require('mongoose');
 
 const sets = new Schema({
-    choice: {
-        type: Number,
-        required: true,
-    },
-    max: {
-        type: Number,
-    },
-    min: {
-        type: Number,
-    },
-    due: {
-        type: Number,
-    },
+    min: { type: String },
+      max: { type: String },
+      time: { type: String },
+      units: { type: String },
 });
 
 module.exports = sets;

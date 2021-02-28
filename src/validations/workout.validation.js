@@ -2,55 +2,46 @@ import Joi from "joi";
 
 export const addWOD = {
   body: Joi.object().keys({
+    _id: Joi.string(),
     wod_id: Joi.string().required(),
     displayName: Joi.string().required(),
     collection: Joi.string().required(),
     status: Joi.string().required(),
     date: Joi.string().required(),
     workouts: Joi.array().items({
+      _id: Joi.string(),
       workout_id: Joi.string().required(),
-      exercise: Joi.array().items({
+      exercises: Joi.array().items({
+        _id: Joi.string(),
         exercise_id: Joi.string().required(),
         title: Joi.string().required(),
-        difficulty: Joi.string().required(),
-        reps: Joi.string(),
+        url: Joi.string(),
+        detailed_muscle_group: Joi.string(),
+        mechanics: Joi.string(),
+        other_muscle_grp: Joi.string(),
+        steps: Joi.string(),
+        type: Joi.string(),
+        main_muscle_grp: Joi.string(),
+        equipment: Joi.string(),
+        difficulty: Joi.string(),
         sets: Joi.array().items({
+          _id: Joi.string(),
           rest: Joi.number(),
-          type: Joi.number().required(),
+          type: Joi.string().required(),
           limits: Joi.object().keys({
-            min: Joi.number(),
-            max: Joi.number(),
-            time: Joi.number(),
+            _id: Joi.string(),
+            min: Joi.string(),
+            max: Joi.string(),
+            time: Joi.string(),
             units: Joi.string(),
           }),
         }),
+        reps: Joi.any(), // it can be a number or an string
         superSet: Joi.string(),
       }),
-      sub: Joi.array().items({
-        _id: Joi.string(),
-        id: Joi.string().required(),
-        settings: Joi.object().keys({
-          rest: Joi.number(),
-          sets: Joi.array().items({
-            _id: Joi.string(),
-            choice: Joi.number().required(),
-            max: Joi.number(),
-            min: Joi.number(),
-            due: Joi.number(),
-          }),
-        }),
-        url: Joi.string().required(),
-        title: Joi.string().required(),
-        main_muscle_grp: Joi.string().required(),
-        type: Joi.string().required(),
-        equipment: Joi.string().required(),
-        difficulty: Joi.string().required(),
-        steps: Joi.string().required(),
-        mechanics: Joi.string().required(),
-        other_muscle_grp: Joi.string().required(),
-        detailed_muscle_group: Joi.string().required(),
-      }),
+      superSet: Joi.string()
     }),
+    superSets: Joi.object()
   }),
 };
 
@@ -61,9 +52,9 @@ export const getWOD = {
   },
 };
 
-export const getWODById = {
+export const getWODByDate = {
   param: {
-    id: Joi.string().required(),
+    date: Joi.string().required(),
     collection: Joi.string().required(),
   },
 };

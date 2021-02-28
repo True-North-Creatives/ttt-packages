@@ -4,8 +4,8 @@ import logger from "../config/logger";
 
 let server;
 
-const init = (app) => {
-  mongoose.set("debug", true);
+const init = (app, debug = false) => {
+  mongoose.set("debug", debug);
   mongoose.connect(mongoose_config().url, mongoose_config().options).then(() => {
     logger.info("Connected to MongoDB");
     server = app.listen(process.env.PORT, () => {

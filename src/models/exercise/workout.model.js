@@ -1,18 +1,12 @@
 const { Schema } = require('mongoose');
-const SingleWorkout = require('./singleWorkout.model');
+const ConfiguredExercise = require('./configuredExercise.model');
 
 const sets = new Schema({
-    id: {
+    workout_id: {
         type: String,
-        required: true,
+        required: true
     },
-
-    main: {
-        type: Object,
-        required: true,
-        ...SingleWorkout,
-    },
-    sub: [SingleWorkout],
+    exercises: [ConfiguredExercise]
 });
 
 module.exports = sets;
