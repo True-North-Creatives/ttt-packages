@@ -45,6 +45,13 @@ export const addWOD = {
   }),
 };
 
+// export const getWOD = {
+//   query: {
+//     date: Joi.string().required(),
+//     collection: Joi.string().required(),
+//   },
+// };
+
 export const getWOD = {
   query: {
     date: Joi.string().required(),
@@ -52,17 +59,17 @@ export const getWOD = {
   },
 };
 
-export const getWODByDate = {
+export const deleteWOD = {
   param: {
-    date: Joi.string().required(),
+    id: Joi.string().required(),
     collection: Joi.string().required(),
   },
 };
 
-export const getSchedule = {
-  query: {
-    date: Joi.date().iso().required(),
-    days: Joi.number().default(3).required(),
-    collection: Joi.string().required(),
-  },
-};
+// export const getSchedule = {
+//   query: {
+//     date: Joi.date().iso().required(),
+//     days: Joi.number().default(3).required(),
+//     collection: Joi.string().required(),
+//   },
+// };

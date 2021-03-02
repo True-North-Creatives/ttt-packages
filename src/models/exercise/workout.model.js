@@ -6,7 +6,10 @@ const sets = new Schema({
         type: String,
         required: true
     },
-    exercises: [ConfiguredExercise]
+    exercises: [ConfiguredExercise],
+    superSet: {
+        type: String
+    }
 });
 
 module.exports = sets;

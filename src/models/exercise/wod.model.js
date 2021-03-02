@@ -22,8 +22,8 @@ const wodSchema = (collection) =>
         required: true,
       },
       workouts: [Workout],
-      superSet: {
-        type: Object,
+      superSets: {
+        type: {},
       },
     },
     {

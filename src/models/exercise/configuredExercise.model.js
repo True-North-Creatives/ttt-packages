@@ -14,6 +14,9 @@ const sets = new Schema({
       type: Sets
     },
   }],
+  reps: {
+    type: String,
+  },
   superSet: {
     type: String,
   },
