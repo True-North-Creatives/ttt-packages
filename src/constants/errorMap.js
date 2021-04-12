@@ -63,6 +63,30 @@ const authMap = {
         type: ERROR,
         name: 'uid cookie is not found',
     },
+    'AUTH-110': {
+        code: 'AUTH-110',
+        message: 'Account is not activated, please check your mail for activation email',
+        type: ERROR,
+        name: 'Account not activated',
+    },
+    'AUTH-111': {
+        code: 'AUTH-111',
+        message: 'Verification token is invalid',
+        type: ERROR,
+        name: 'Verification token invalid',
+    },
+    'AUTH-112': {
+        code: 'AUTH-112',
+        message: 'Account was created by EMAIL',
+        type: ERROR,
+        name: 'Invalid Login',
+    },
+    'AUTH-113': {
+        code: 'AUTH-113',
+        message: 'Account was created using 3RD Party',
+        type: ERROR,
+        name: 'Invalid Login',
+    }
 };
 
 export const customError = (data) => ({
@@ -75,4 +99,12 @@ export const customError = (data) => ({
     },
 });
 
-export default { ...authMap };
+export const userErrorMap = {
+    'USER-101': {
+        code: 'USER-101',
+        message: 'Problem while updating the details',
+        type: ERROR,
+        name: 'Update Error',
+    }
+}
+export default authMap;

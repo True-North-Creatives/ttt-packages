@@ -4,7 +4,7 @@ import logger from '../config/logger';
 export const constructResetUrl = (token) => {
     switch (process.env.NODE_ENV) {
     case 'dev':
-        return `https://localhost:8081/reset/${token}`;
+        return `http://timetotrain.fit/reset/${token}`;
     case 'staging':
         return `https://stage.timetotrain.fit/reset/${token}`;
     case 'prod':
@@ -18,7 +18,7 @@ export const constructResetUrl = (token) => {
 export const constructActivateUrl = (token) => {
     switch (process.env.NODE_ENV) {
     case 'dev':
-        return `https://localhost:8081/activate/${token}`;
+        return `http://timetotrain.fit/activate/${token}`;
     case 'staging':
         return `https://stage.timetotrain.fit/activate/${token}`;
     case 'prod':

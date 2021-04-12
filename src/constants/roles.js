@@ -4,6 +4,7 @@ export const ROLES = {
     Trainer: 'TRAINER',
     Manager: 'MANAGER',
     Admin: 'ADMIN',
+    Pending: 'PENDING'
 };
 export const route = {
     //   auth: {

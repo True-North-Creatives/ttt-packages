@@ -5,8 +5,9 @@ export const sendWelcomeMail = async (email, name) => {
         name,
     };
     const { status, data } = await axios.post(
-        `${process.env.MAIL_ENDPOINT}/welcome/${email}`,
+        `api/v2/mail/welcome/${email}`,
         payload,
+        { withCredentials: true, validateStatus: (status)=> status <= 503 }
     );
     return { status, data };
 };
@@ -17,8 +18,9 @@ export const sendPasswordResetMail = async (email, name, redirecturl) => {
         redirecturl,
     };
     const { status, data } = await axios.post(
-        `${(process.env.MAIL_ENDPOINT)}/reset/${email}`,
+        `api/v2/mail/reset/${email}`,
         payload,
+        { withCredentials: true, validateStatus: (status)=> status <= 503 }
     );
     return { status, data };
 };
@@ -28,8 +30,9 @@ export const sendConfirmationMail = async (email, redirecturl) => {
         redirecturl,
     };
     const { status, data } = await axios.post(
-        `${(process.env.MAIL_ENDPOINT)}/confirm/${email}`,
+        `api/v2/mail/confirm/${email}`,
         payload,
+        { withCredentials: true, validateStatus: (status)=> status <= 503 }
     );
     return { status, data };
 };
